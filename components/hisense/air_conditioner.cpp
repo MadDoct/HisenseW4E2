@@ -59,9 +59,9 @@ void AirConditioner::loop() {
 
   if (millis() - this->last_recived_ > 2000 && status == Status::standby) {
     ESP_LOGD(TAG, "Requsting status.");
-    std::vector<uint8_t> requst_status{0xF4, 0xF5, 0x00, 0x40, 0x0C, 0x00,
+    std::vector<uint8_t> requst_status{0xF4, 0xF5, 0x00, 0x40, 0x29, 0x00,
                                        0x00, 0x01, 0x01, 0xFE, 0x01, 0x00,
-                                       0x00, 0x66, 0x00, 0x00, 0x00};
+                                       0x00, 0x65, 0x00, 0x00, 0x00};
     this->send_raw(requst_status);
     // F4 F5 00 40 0C 00 00 01 01 FE 01 00 00 66 00 00 00 01 B3 F4 FB
     change_status(Status::waiting_for_status_response);
